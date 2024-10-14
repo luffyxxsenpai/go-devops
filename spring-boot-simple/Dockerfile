@@ -9,5 +9,5 @@ RUN apt update && apt install openjdk-17-jdk maven git -y && \
 FROM openjdk 
 WORKDIR /app
 COPY --from=builder /app/myjava.jar /app/myjava.jar
+ENV PORT=10000
 CMD ["java", "-jar", "/app/myjava.jar"]
-EXPOSE 8080
