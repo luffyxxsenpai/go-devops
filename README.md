@@ -1,5 +1,5 @@
-# go-devops
-- this repo contains the go projects that i used for learing how to dockerize go
+# devops
+- this repo contains the  projects that i used for learing how to devops 
 - all projects will have their own readme inside their respective folers
 - surely i didnt code everyting so thanks everyone whose code i ~stole~ refrenced
 
