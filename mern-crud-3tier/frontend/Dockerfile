@@ -1,9 +1,6 @@
 FROM node AS builder
 WORKDIR /static
 
-ENV REACT_APP_BACKEND_URL=http://localhost
-ENV REACT_APP_BACKEND_PORT=7000
-
 COPY package* yarn* /static/ 
 RUN yarn install 
 COPY . .
