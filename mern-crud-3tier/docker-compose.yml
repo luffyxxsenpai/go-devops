@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  frontend1:
+  frontend:
     build:
       context: ./frontend
     ports:
@@ -9,13 +9,29 @@ services:
     env_file:
       - ./frontend/.env # Reference the frontend .env file
     depends_on:
-      - backend1
+      - backend
 
-  backend1:
+  backend:
     build:
       context: ./backend
     ports:
       - "7000:7000"
     env_file:
       - ./backend/.env # Reference the backend .env file
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: myuser
+      MONGO_INITDB_ROOT_PASSWORD: mypasswd
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:
 
