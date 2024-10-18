@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  frontend1:
+    build:
+      context: ./frontend
+    ports:
+      - "80:80"
+    env_file:
+      - ./frontend/.env # Reference the frontend .env file
+    depends_on:
+      - backend1
+
+  backend1:
+    build:
+      context: ./backend
+    ports:
+      - "7000:7000"
+    env_file:
+      - ./backend/.env # Reference the backend .env file
+
