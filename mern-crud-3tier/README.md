@@ -25,3 +25,10 @@
 
 - to build
   - `yarn build`
+
+
+# dockercompose
+- `docker-compose up --build --remove-orphans -d`
+- `docker-compose down`
+
+- rename the .env-sample to .env
