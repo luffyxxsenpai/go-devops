@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
+
+
 const Create = () => {
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [age, setAge] = useState("");
-  const [error, setError] = useState(""); 
+  const [name, setName] = useState([]);
+  const [email, setEmail] = useState([]);
+  const [age, setAge] = useState([]);
+  const [error, setError] = useState(); 
   const navigate= useNavigate();
   console.log(name, email, age);
   
@@ -16,8 +18,8 @@ const Create = () => {
     const addUser = { name, email, age };
 
     try {
-      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}:${process.env.REACT_APP_BACKEND_PORT}`, {
-      
+      const response = await fetch(`http://localhost:7000/`, {
+       
         method: "POST",
         body: JSON.stringify(addUser),
         headers: {

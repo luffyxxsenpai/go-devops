@@ -4,10 +4,11 @@ services:
       context: ./frontend
     ports:
       - "80:80"
-    env_file:
-      - ./frontend/.env
     depends_on:
       - backend
+    networks:
+      - app-network
+
 
   backend:
     build:
@@ -16,16 +17,10 @@ services:
       - "7000:7000"
     env_file:
       - ./backend/.env
-    depends_on:
-      - mongo
 
-  mongo:
-    image: mongo:latest
-    container_name: mongon
-    ports:
-      - "${DB_PORT_HOST}:${DB_PORT_CONTAINER}"
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
-      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
-    env_file:
-      - ./.env
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

@@ -4,31 +4,33 @@
 - get your mono-db url from localhost or atlas
 - update the env with correct values 
 
-- `Dockerfile` will be seperated for frontend and backend
-
 - to start
   - 'yarn run dev'
 
-- DB will be listening on port `5000` by default
+- DB will be listening on port `7000` by default
 
 # frontend
-
-- rename the `.env-sample` to `.env` 
-- update the env with correct values 
-
-- `Dockerfile` will be seperated for frontend and backend
 
 - to start
   - 'yarn start'
 
-- it will be running on port `3000` and listening backend on `5000` by default
+- it will be running on port `3000` and listening backend on `7000` by default
 
 - to build
   - `yarn build`
 
 
-# dockercompose
-- `docker-compose up --build --remove-orphans -d`
-- `docker-compose down`
+# docker
+- if you are using this with docker-compose, the frontend would be running on port `3000` in nginx
 
-- rename the .env-sample to .env
+- `docker-compose up --build --remove-orphans` to run and `-d` for detached mode
+
+- i have removed the env support in frontend cause i dont't know how can i import the env in nginx containers
+
+- so the url path is hard coded and if you need to change the **port** or **backend-url**, edit the
+
+  - frontend/src/components/Create.jsx
+  - frontend/src/components/Read.jsx
+  - frontend/src/components/Update.jsx
+
+

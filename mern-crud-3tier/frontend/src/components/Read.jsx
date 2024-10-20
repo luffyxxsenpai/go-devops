@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom"; // Import Link for navigation
 
 const Read = () => {
-  const [data, setData] = useState();
-  const [error, setError] = useState();
+  const [data, setData] = useState([]);
+  const [error, setError] = useState([]);
 
   async function handleDelete(id) {
-    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}:${process.env.REACT_APP_BACKEND_PORT}/${id}`, {
+    const response = await fetch(`http://localhost:7000/${id}`, {
       method: "DELETE",
     });
     const result1 = await response.json();
@@ -24,7 +24,7 @@ const Read = () => {
   }
 
   async function getData() {
-    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}:${process.env.REACT_APP_BACKEND_PORT}`);
+    const response = await fetch(`http://localhost:7000/`);
     const result = await response.json();
     console.log("result..", result);
     if (!response.ok) {

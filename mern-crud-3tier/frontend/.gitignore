@@ -13,7 +13,6 @@
 
 
 # secret
-.env
 
 # misc
 .DS_Store

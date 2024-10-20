@@ -7,9 +7,7 @@ COPY . .
 
 FROM node:alpine AS production
 WORKDIR /app
-copy --from=builder /back /app
+COPY --from=builder /back /app
 
 EXPOSE 7000
 CMD ["npm" , "start"]
-
-

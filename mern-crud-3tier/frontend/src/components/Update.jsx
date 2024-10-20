@@ -5,15 +5,15 @@ const Update = () => {
   const { id } = useParams(); // Get the id from the URL
   const navigate = useNavigate(); // Use for redirecting after update
   
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [age, setAge] = useState("");
-  const [error, setError] = useState("");
+  const [name, setName] = useState([]);
+  const [email, setEmail] = useState([]);
+  const [age, setAge] = useState([]);
+  const [error, setError] = useState();
   
   // Fetch user details to fill the form for editing
   useEffect(() => {
     const fetchUser = async () => {
-      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}:${process.env.REACT_APP_BACKEND_PORT}/${id}`);
+      const response = await fetch(`http://localhost:7000/${id}`);
       const data = await response.json();
       if (response.ok) {
         setName(data.name);
@@ -32,7 +32,7 @@ const Update = () => {
     const updatedUser = { name, email, age };
 
     // Make the PATCH request to update the user
-    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}:${process.env.REACT_APP_BACKEND_PORT}/${id}`, {
+    const response = await fetch(`http://localhost:7000/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
