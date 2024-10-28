@@ -9,4 +9,9 @@
 - PASSWORD
 - NUMBER
 
+- docker image version 2 has extra env 
+- VERSION 
+
+
+- `docker run luffyxxsenpai/goenv:v2`
 

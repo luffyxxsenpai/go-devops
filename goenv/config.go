@@ -10,6 +10,7 @@ type Config struct {
 	Age      string
 	Password string
 	Number   string
+  Version  string
 }
 
 // LoadConfig reads environment variables directly (no .env needed in Kubernetes)
@@ -19,7 +20,8 @@ func LoadConfig() Config {
 		Age:      getEnv("AGE", "0"),
 		Password: getEnv("PASSWORD", "password"),
 		Number:   getEnv("NUMBER", "000-000-0000"),
-	}
+	  Version:  getEnv("VERSION", "xyz "),
+  }
 }
 
 // getEnv retrieves environment variables with a fallback

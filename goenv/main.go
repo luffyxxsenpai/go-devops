@@ -24,7 +24,8 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 		"Age":      config.Age,
 		"Password": config.Password,
 		"Number":   config.Number,
-	}
+    "Version":  config.Version,
+  }
 
 	err := tmpl.Execute(w, data)
 	if err != nil {
